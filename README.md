@@ -27,15 +27,15 @@
 </p>
 <h3>RAG-ICL Flowchart</h3>
 <p align="center">
-    <img src="assets/RAG-ICL.jpg" alt="RAG-ICL" width="50%">
+    <img src="assets/RAG-ICL.png" alt="RAG-ICL" width="70%">
 </p>
 <h3>DFPO Flowchart</h3>
 <p align="center">
-    <img src="assets/DFPO.png" alt="DFPO" width="60%">
+    <img src="assets/DFPO.png" alt="DFPO" width="70%">
 </p>
 <h3>DMCR Flowchart</h3>
 <p align="center">
-    <img src="assets/DMCR.png" alt="DMCR" width="50%">
+    <img src="assets/DMCR.png" alt="DMCR" width="70%">
 </p>
 
 <h2>Prerequisites</h2>
