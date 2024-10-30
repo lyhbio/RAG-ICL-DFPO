@@ -35,7 +35,7 @@
 </p>
 <h3>DMCR Flowchart</h3>
 <p align="center">
-    <img src="assets/DMCR.png" alt="DMCR" width="70%">
+    <img src="assets/DMCR.png" alt="DMCR" width="68%">
 </p>
 
 <h2>Prerequisites</h2>
