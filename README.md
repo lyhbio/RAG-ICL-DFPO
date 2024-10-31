@@ -12,7 +12,8 @@
 </p>
 
 <p align="justify">
-    This repository provides code for the RAG-ICL and DFPO methods. RAG-ICL is based on the concept of Retrieval-Augmented Generation (RAG), optimizing in-context learning by selecting high-quality examples. <b>DFPO</b> (<b>D</b>ual-phase <b>F</b>ine-tuning and <b>P</b>reference <b>O</b>ptimization), on the other hand, uses a "two-stage fine-tuning and preference optimization" strategy, specifically designed for the data structure of biomedical information extraction tasks. It gradually strengthens the model's performance on positive samples and enhances overall effectiveness through preference optimization. Experimental results show that both methods achieve significant improvements over traditional approaches.
+    This repository provides code for the RAG-ICL and DFPO methods. RAG-ICL is based on the concept of Retrieval-Augmented Generation (RAG), optimizing in-context learning by selecting high-quality examples. <br>
+    <b>DFPO</b> (<b>D</b>ual-phase <b>F</b>ine-tuning and <b>P</b>reference <b>O</b>ptimization), on the other hand, uses a "two-stage fine-tuning and preference optimization" strategy, specifically designed for the data structure of biomedical information extraction tasks. It gradually strengthens the model's performance on positive samples and enhances overall effectiveness through preference optimization. Experimental results show that both methods achieve significant improvements over traditional approaches.
     <ul>
         <li>
             📖 Paper: <a href="">RAG-ICL and DFPO: Enhancement methods for two learning paradigms in biomedical information extraction</a>
@@ -35,7 +36,7 @@
 </p>
 <h3>DMCR Flowchart</h3>
 <p align="center">
-    <img src="assets/DMCR.png" alt="DMCR" width="68%">
+    <img src="assets/DMCR.png" alt="DMCR" width="70%">
 </p>
 
 <h2>Prerequisites</h2>
@@ -105,9 +106,9 @@ accelerate launch ./scripts/DFPO/prefer_optimize.py \
 
 <h2>Reminder</h2>
 <p>
-    The <a href="https://github.com/abacusai/smaug">DPOP</a> algorithm has not yet been integrated into Huggingface's trl library and needs to be implemented in DPOTrainer.
+    The <a href="https://github.com/abacusai/smaug">DPOP</a> algorithm has not yet been integrated into Huggingface's trl library and needs to be implemented manually in DPOTrainer.
 </p>
-<p>The following is the implementation of TRL loss</p>
+<p>The following is the implementation of DPOP loss</p>
 
 ```
        pi_logratios = policy_chosen_logps - policy_rejected_logps
