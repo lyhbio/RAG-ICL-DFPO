@@ -66,7 +66,7 @@ accelerator = Accelerator()
 device_map = {"": Accelerator().local_process_index}
 num_cores = os.cpu_count()
 
-MFPEA = load_dataset("Knifecat/DFPO-MFPEA")
+MFPEA = load_dataset("liyinghong/DFPO-MFPEA")
 MFPEA = MFPEA['train'].shuffle()
 formatted_MFEPA = MFPEA.map(process_func,num_proc=num_cores//4)
 tokenizer = AutoTokenizer.from_pretrained(args.modelpath,use_fast=True)
