@@ -1,6 +1,4 @@
-<div>
-    <h1>RAG-ICL and DFPO: Enhancement methods for two learning paradigms in biomedical information extraction</h1>
-</div>
+<h1>RAG-ICL and DFPO: Enhancement methods for two learning paradigms in biomedical information extraction</h1>
 
 <p align="center">
     <a 
@@ -19,10 +17,13 @@
             📖 Paper: <a href="">RAG-ICL and DFPO: Enhancement methods for two learning paradigms in biomedical information extraction</a>
         </li>
         <li>
-            🤖 Model availiable: <a href="https://huggingface.co/Knifecat/DFPO-Gemma2">Knifecat/DFPO-Gemma2</a>
+            🤖 Model availiable: <a href="https://huggingface.co/liyinghong/DFPO-Gemma2">DFPO-Gemma2</a>
         </li>
         <li>
-            📁 PreFt-Data and MFPEA: <a href="https://huggingface.co/Knifecat">Data</a>
+            📁 PreFt-Data and MFPEA:
+            <a href="https://huggingface.co/datasets/liyinghong/DFPO-Preft-taiyi">DFPO-Preft-Data1</a>
+            <a href="https://huggingface.co/datasets/liyinghong/DFPO-Preft-adelie">DFPO-Preft-Data2</a>
+            <a href="https://huggingface.co/datasets/liyinghong/DFPO-MFPEA">MFPEA</a>
         </li>
     </ul>
 </p>
