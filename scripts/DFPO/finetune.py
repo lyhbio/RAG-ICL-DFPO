@@ -48,8 +48,8 @@ def setup_parser():
 def data_preprocess(tokenizer,num_cores,args):
     # Load datasets
     datasets = {
-        'taiyi': load_dataset("Knifecat/DFPO-Preft-taiyi"),
-        'adelie': load_dataset("Knifecat/DFPO-Preft-adelie")
+        'taiyi': load_dataset("liyinghong/DFPO-Preft-taiyi"),
+        'adelie': load_dataset("liyinghong/DFPO-Preft-adelie")
     }
 
     def taiyi_filter_fields(example):
