@@ -27,6 +27,10 @@
         </li>
     </ul>
 </p>
+<h3>Graphical Abstract</h3>
+<p align="center">
+    <img src="assets/Graphical Abstract.png" alt="Graphical Abstract" width="70%">
+</p>
 <h3>RAG-ICL Flowchart</h3>
 <p align="center">
     <img src="assets/RAG-ICL.png" alt="RAG-ICL" width="70%">
