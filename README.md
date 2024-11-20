@@ -1,4 +1,4 @@
-<h1>RAG-ICL and DFPO: Enhancement methods for two learning paradigms in biomedical information extraction</h1>
+<h1>Enhancing Biomedical NER and RE with RAG-ICL and DFPO: Novel Approaches for Dual Learning Paradigms</h1>
 
 <p align="center">
     <a 
@@ -14,7 +14,7 @@
     <b>DFPO</b> (<b>D</b>ual-phase <b>F</b>ine-tuning and <b>P</b>reference <b>O</b>ptimization), on the other hand, uses a "two-stage fine-tuning and preference optimization" strategy, specifically designed for the data structure of biomedical information extraction tasks. It gradually strengthens the model's performance on positive samples and enhances overall effectiveness through preference optimization. Experimental results show that both methods achieve significant improvements over traditional approaches.
     <ul>
         <li>
-            📖 Paper: <a href="">RAG-ICL and DFPO: Enhancement methods for two learning paradigms in biomedical information extraction</a>
+            📖 Paper: <a href="">Enhancing Biomedical NER and RE with RAG-ICL and DFPO: Novel Approaches for Dual Learning Paradigms</a>
         </li>
         <li>
             🤖 Model availiable: <a href="https://huggingface.co/liyinghong/DFPO-Gemma2">DFPO-Gemma2</a>
