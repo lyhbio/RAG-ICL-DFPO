@@ -1,10 +1,10 @@
-<h1>Enhancing Biomedical NER and RE with RAG-ICL and DFPO: Novel Approaches for Dual Learning Paradigms</h1>
+<h1>Enhancing Biomedical Named Entity Recognition and Relation Extraction with RAG-ICL and DFPO</h1>
 
 <p align="center">
     <a 
         href=""><img alt="Paper" src="https://img.shields.io/badge/📖-Paper-orange">
     </a>
-    <a href="https://huggingface.co/Knifecat/DFPO-Gemma2">
+    <a href="https://huggingface.co/liyinghong/DFPO-Gemma2">
         <img alt="Pretrained Models" src="https://img.shields.io/badge/🤗HuggingFace-Pretrained Models-green">
     </a>
 </p>
@@ -14,34 +14,34 @@
     <b>DFPO</b> (<b>D</b>ual-phase <b>F</b>ine-tuning and <b>P</b>reference <b>O</b>ptimization), on the other hand, uses a "two-stage fine-tuning and preference optimization" strategy, specifically designed for the data structure of biomedical information extraction tasks. It gradually strengthens the model's performance on positive samples and enhances overall effectiveness through preference optimization. Experimental results show that both methods achieve significant improvements over traditional approaches.
     <ul>
         <li>
-            📖 Paper: <a href="">Enhancing Biomedical NER and RE with RAG-ICL and DFPO: Novel Approaches for Dual Learning Paradigms</a>
+            📖 Paper: <a href="">Enhancing Biomedical Named Entity Recognition and Relation Extraction with RAG-ICL and DFPO</a>
         </li>
         <li>
-            🤖 Model availiable: <a href="https://huggingface.co/liyinghong/DFPO-Gemma2">DFPO-Gemma2</a>
+            🤖 Model availiable: <a href="https://huggingface.co/liyinghong/DFPO-Gemma2">Gemma2-DFPO</a>
         </li>
         <li>
-            📁 PreFt-Data and MFPEA:
-            <a href="https://huggingface.co/datasets/liyinghong/DFPO-Preft-taiyi">DFPO-Preft-Data1</a>
-            <a href="https://huggingface.co/datasets/liyinghong/DFPO-Preft-adelie">DFPO-Preft-Data2</a>
+            📁 PreFinetune Data and MFPEA:
+            <a href="https://huggingface.co/datasets/liyinghong/DFPO-Preft-taiyi">DFPO-PreFinetune-Data1</a>
+            <a href="https://huggingface.co/datasets/liyinghong/DFPO-Preft-adelie">DFPO-PreFinetune-Data2</a>
             <a href="https://huggingface.co/datasets/liyinghong/DFPO-MFPEA">MFPEA</a>
         </li>
     </ul>
 </p>
 <h3>Graphical Abstract</h3>
 <p align="center">
-    <img src="assets/Graphical Abstract.png" alt="Graphical Abstract" width="70%">
+    <img src="assets/Graphical Abstract.png" alt="Graphical Abstract" width="50%">
 </p>
 <h3>RAG-ICL Flowchart</h3>
 <p align="center">
-    <img src="assets/RAG-ICL.png" alt="RAG-ICL" width="70%">
+    <img src="assets/RAG-ICL.jpg" alt="RAG-ICL" width="50%">
 </p>
 <h3>DFPO Flowchart</h3>
 <p align="center">
-    <img src="assets/DFPO.png" alt="DFPO" width="70%">
+    <img src="assets/DFPO.jpg" alt="DFPO" width="50%">
 </p>
 <h3>DMCR Flowchart</h3>
 <p align="center">
-    <img src="assets/DMCR.png" alt="DMCR" width="70%">
+    <img src="assets/DMCR.jpg" alt="DMCR" width="50%">
 </p>
 
 <h2>Prerequisites</h2>
@@ -59,15 +59,99 @@
 Install the required packages using:
 <pre><code>pip install -r requirements.txt</code></pre>
 
+<h2>Directory Structure</h2>
+
+```
+.
+├── assets/
+│   ├── DFPO.jpg
+│   ├── DMCR.jpg
+│   ├── Graphical Abstract.png
+│   └── RAG-ICL.jpg
+├── README.md
+├── requirements.txt
+└── scripts/
+    ├── DFPO/
+    │   ├── finetune.py
+    │   └── prefer_optimize.py
+    ├── generate_data.py
+    └── RAG-ICL/
+        └── best_examples.py
+```
+
+## Description of Contents
+
+### assets/
+
+It includes the flowcharts of the RAG-ICL, DFPO and DMCR methods, as well as the graphical abstract diagram of this study.
+
+### README.md
+
+This file, providing an overview and instructions for the repository.
+
+### requirements.txt
+
+This document lists all the dependencies required for running the scripts in this repository.
+
+### scripts/
+
+- **DFPO/**
+  - **finetune.py**: This script is used for stage 1: Finetune and stage 3: Post-Finetune of DFPO. Users are required to download the model for fine-tuning in advance and specify the path of the model. This script will automatically download the dataset required for the fine-tuning of DFPO and perform preprocessing (the template of the tokenizer is the chat_template of gemma2. If you need the chat_template of other models, please modify it manually). Subsequently, the model will be fine-tuned.
+  - **prefer_optimize.py**: This script will automatically download the MFPEA dataset required for the stage 2 preference optimization of DFPO and perform preprocessing. Subsequently, based on the DPOTrainer of the trl library, the DPOP algorithm will be used for preference optimization. It should be noted that the DPOP algorithm has not been inherited in the trl library currently, and users need to make certain modifications. Please refer to the [Reminder](#Reminder) for the specific modifications.
+- **generate_data.py/**: Running this script will download the eight open-source datasets used in the RAG-ICL method of this study. The download address is the dataset hosted by the bigbio project on HuggingFace. The script will generate a "data" directory in the current path, which contains a "raw" subdirectory (the dataset directly downloaded from the bigbio project) and a "collate" subdirectory (the dataset preprocessed by the script).
+- **RAG-ICL/**
+  - **best_examples.py**:This script requires users to download the embedding model and rerank model in advance and provide their paths. The script will perform RAG screening on the dataset in the collate subdirectory generated by generate_data.py, select training set samples with high relevance for each test set sample, match the test set samples with the document IDs of the training set samples, and generate a best_example.json file saved in the RAG-ICL directory.
+
 <h2>Runing</h2>
 <h3>RAG-ICL</h3>
-<p>RAG-ICL and assessment dataset generation</p>
+
+<p>Running the following command will download and process the datasets used in the RAG-ICL method of this study.</p>
 
 ```
 python ./scripts/generate_data.py --all
 ```
 
-<p>Filtering out high-quality examples</p>
+<p>A "Data" directory will be generated in the local path.</p>
+
+```
+.
+├── collate
+│   ├── ner
+│   │   ├── bc5cdr_chemical
+│   │   │   ├── bc5cdr_chemical_test_processed.json
+│   │   │   └── bc5cdr_chemical_train_processed.json
+│   │   ├── bc5cdr_disease
+│   │   │   ├── bc5cdr_disease_test_processed.json
+│   │   │   └── bc5cdr_disease_train_processed.json
+│   │   ├── chemdner
+│   │   │   ├── chemdner_test_processed.json
+│   │   │   └── chemdner_train_processed.json
+│   │   ├── ncbi_disease
+│   │   │   ├── ncbi_disease_test_processed.json
+│   │   │   └── ncbi_disease_train_processed.json
+│   │   └── nlm_gene
+│   │       ├── nlm_gene_test_processed.json
+│   │       └── nlm_gene_train_processed.json
+│   └── re
+│       ├── bc5cdr
+│       │   ├── bc5cdr_test_processed.json
+│       │   └── bc5cdr_train_processed.json
+│       ├── biorelex
+│       │   ├── biorelex_test_processed.json
+│       │   └── biorelex_train_processed.json
+│       └── ddi_corpus
+│           ├── ddi_corpus_test_processed.json
+│           └── ddi_corpus_train_processed.json
+└── raw
+    ├── bc5cdr/
+    ├── biorelex/
+    ├── chemdner/
+    ├── ddi_corpus/
+    ├── ncbi_disease/
+    └── nlm_gene/
+```
+
+<p>Running the following command will execute the RAG-ICL method to screen out high-quality examples.</p>
 
 ```
 python ./scripts/RAG-ICL/best_examples.py \
@@ -81,7 +165,23 @@ python ./scripts/RAG-ICL/best_examples.py \
 ```
 
 <h3>DFPO</h3>
-<p>PreFt and Post-Ft</p>
+The training of DFPO consists of three stages in total.
+
+#### Stage 1 Pre-Finetune OR Stage 3 Post-Finetune
+
+1. **Load and Filter Data:**
+    - Load dataset from the Huggingface repository of DFPO.
+    - Filter and preprocess the data.
+    - By default, use Gemma2's chat template to tokenize the dataset.
+
+2. **Model Setup:**
+    - Load the pre-trained model and tokenizer.
+    - Configure BitsAndBytes for efficient training.
+    - Prepare the model for QLoRA/LoRA training.
+
+3. **Training Configuration:**
+    - Define training arguments.
+    - Create a Trainer instance and start training.
 
 ```
 accelerate launch ./scripts/DFPO/finetune.py \
@@ -95,7 +195,19 @@ accelerate launch ./scripts/DFPO/finetune.py \
     --output_dir "../../result" \
 ```
 
-<p>Preference Optimization</p>
+#### Stage 3 Preference optimization of DPOP
+
+1. **Load Data:**
+    - Load MFPEA dataset from the Huggingface repository of DFPO.
+    - preprocess the data.
+    - By default, use Gemma2's chat template to tokenize the dataset.
+
+2. **Model Setup:**
+    - Load the pre-trained model and tokenizer.
+
+3. **Training Configuration:**
+    - Define DPOP and QLoRA/LoRA training arguments.
+    - Create a Trainer instance and start training.
 
 ```
 accelerate launch ./scripts/DFPO/prefer_optimize.py \
@@ -126,9 +238,3 @@ accelerate launch ./scripts/DFPO/prefer_optimize.py \
                 - F.logsigmoid(-self.beta * logits) * self.label_smoothing
             )
 ```
-
-
-
-
-
-
