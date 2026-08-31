@@ -1,4 +1,4 @@
-<h1>Enhancing Biomedical Named Entity Recognition and Relation Extraction with RAG-ICL and DFPO</h1>
+<h1>Empowering LLMs for Biomedical Information Extraction with RAG-ICL and DFPO</h1>
 
 <p align="center">
     <a 
@@ -11,10 +11,10 @@
 
 <p align="justify">
     This repository provides code for the RAG-ICL and DFPO methods. RAG-ICL is based on the concept of Retrieval-Augmented Generation (RAG), optimizing in-context learning by selecting high-quality examples. <br>
-    <b>DFPO</b> (<b>D</b>ual-phase <b>F</b>ine-tuning and <b>P</b>reference <b>O</b>ptimization), on the other hand, uses a "two-stage fine-tuning and preference optimization" strategy, specifically designed for the data structure of biomedical information extraction tasks. It gradually strengthens the model's performance on positive samples and enhances overall effectiveness through preference optimization. Experimental results show that both methods achieve significant improvements over traditional approaches.
+    <b>DFPO</b> (<b>D</b>ual-phase <b>F</b>ine-tuning with <b>P</b>reference <b>O</b>ptimization), on the other hand, uses a "two-stage fine-tuning and preference optimization" strategy, specifically designed for the data structure of biomedical information extraction tasks. It gradually strengthens the model's performance on positive samples and enhances overall effectiveness through preference optimization. Experimental results show that both methods achieve significant improvements over traditional approaches.
     <ul>
         <li>
-            📖 Paper: <a href="">Enhancing Biomedical Named Entity Recognition and Relation Extraction with RAG-ICL and DFPO</a>
+            📖 Paper: <a href="">Empowering LLMs for Biomedical Information Extraction with RAG-ICL and DFPO</a>
         </li>
         <li>
             🤖 Model availiable: <a href="https://huggingface.co/liyinghong/DFPO-Gemma2">Gemma2-DFPO</a>
